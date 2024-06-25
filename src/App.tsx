@@ -1,6 +1,5 @@
-import React from 'react';
 import './App.css';
-import { Provider } from 'react-redux';
+/* import { Provider } from 'react-redux';
 import { AppRouter } from './router/AppRouter';
 
 import {
@@ -8,15 +7,14 @@ import {
   Route,
   Routes,
   Navigate,
-} from "react-router-dom";
+} from "react-router-dom"; */
 import { MainPage } from './pages/MainPage';
 /* <Provider store={store}>
       <AppRouter />
     </Provider> */
 function App() {
-  return (
-    <MainPage/>
-    );
+  return (<MainPage />
+  ); /* */
 }
 
 export default App;

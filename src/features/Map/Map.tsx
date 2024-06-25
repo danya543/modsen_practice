@@ -1,8 +1,7 @@
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { useRef, useCallback } from "react";
-import styles from '../style.module.css'
+import styles from '../style.module.css';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
 
 const containerStyle = {
     width: '100%',
@@ -18,22 +17,22 @@ export const Map = () => {
     const mapRef = useRef(undefined)
     const { isLoaded } = useJsApiLoader({
         id: "google-map-script",
-        googleMapsApiKey: API_KEY || "",
+        googleMapsApiKey: "AIzaSyC7rbmiDnnkApusuOkNLUJTYzlqn-42RYk",
         libraries: ['places'],
         language: 'ru'
     });
 
-    const onLoad = useCallback(function callback(map) {
+    const onLoad = useCallback(function callback(map: any) {
         mapRef.current = map;
     }, [])
 
-    const onUnmount = useCallback(function callback(map) {
+    const onUnmount = useCallback(function callback() {
         mapRef.current = undefined;
     }, [])
 
 
     return isLoaded ?
-        (<div className={styles.mapContainer}>
+        (<div className="w-75">
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
@@ -42,6 +41,6 @@ export const Map = () => {
                 onUnmount={onUnmount}
             >
             </GoogleMap>
-        </div>) : (<div>loading...</div>)
+        </div>) : (<span className={styles.loader} ></span>)
 
 }

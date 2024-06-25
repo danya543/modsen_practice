@@ -1,6 +1,6 @@
-export const Search=()=>{
+export const Search = () => {
     return (
-        <div>
+        <div className="w-100 d-flex justify-content-center">
             <input placeholder="Место, адрес.." type="text" />
         </div>
     )
