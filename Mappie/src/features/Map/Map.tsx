@@ -13,11 +13,13 @@ const center = {
     lng: 27.555
 };
 
+const API_KEY: string = import.meta.env.VITE_APP_API_KEY
+
 export const Map = () => {
     const mapRef = useRef(undefined)
     const { isLoaded } = useJsApiLoader({
         id: "google-map-script",
-        googleMapsApiKey: "AIzaSyC7rbmiDnnkApusuOkNLUJTYzlqn-42RYk",
+        googleMapsApiKey: API_KEY,
         libraries: ['places'],
         language: 'ru'
     });
