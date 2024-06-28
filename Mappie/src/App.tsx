@@ -12,9 +12,9 @@ import { MainPage } from './pages/MainPage';
 /* <Provider store={store}>
       <AppRouter />
     </Provider> */
-function App() {
+const App = () => {
   return (<MainPage />
-  ); /* */
+  );
 }
 
 export default App;
