@@ -18,25 +18,19 @@ export const Search = ({ isLoaded, onSearch }: { isLoaded: boolean, onSearch: ({
         debounce: 300,
     });
     const ref = useOnclickOutside(() => {
-        // When the user clicks outside of the component, we can dismiss
-        // the searched suggestions by calling this method
         clearSuggestions();
     });
 
     const handleInput = (e: { target: { value: string; }; }) => {
-        // Update the keyword of the input element
         setValue(e.target.value);
     };
 
     const handleSelect =
         ({ description }: { description: string }) =>
             () => {
-                // When the user selects a place, we can replace the keyword without request data from API
-                // by setting the second parameter to "false"
                 setValue(description, false);
                 clearSuggestions();
 
-                // Get latitude and longitude via utility functions
                 getGeocode({ address: description }).then((results) => {
                     const { lat, lng } = getLatLng(results[0]);
                     /* console.log("📍 Coordinates: ", { lat, lng }); */
