@@ -23,7 +23,7 @@ export const MainPage = () => {
 
     const onSearch = useCallback((coord: { lat: number, lng: number }) => { setCenter(coord) }, [])
 
-    const onMarkerAdd = (coord: { lat: number, lng: number }) => {
+    const onMarkerAdd = (coord: any) => {
         setMarkerCoord(coord);
     }
     return (

@@ -25,14 +25,14 @@ const defaultOptions = {
 export const Map = ({ isLoaded, center, onMarkerAdd, marker }: { isLoaded: boolean, center: { lat: number, lng: number }, onMarkerAdd: ({ lat, lng }: { lat: number, lng: number }) => void, marker: { lat: number, lng: number } | undefined }) => {
     const mapRef = useRef(undefined)
 
-    const onClick = (location) => {
+    const onClick = (location: any) => {
         const lat = location.latLng.lat();
         const lng = location.latLng.lng()
         onMarkerAdd({ lat, lng });
         console.log({ lat, lng })
     }
 
-    const onLoad = useCallback(function callback(map) {
+    const onLoad = useCallback(function callback(map: any) {
         mapRef.current = map;
     }, [])
 
