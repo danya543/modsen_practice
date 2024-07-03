@@ -1,6 +1,9 @@
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useRef, useCallback } from "react";
+import { coords } from "../../utils/location";
 import styles from '../style.module.css';
+import { GeolocationMarker } from "../geolocationMarker";
+import { defaultTheme } from "../../utils/Theme";
 
 const containerStyle = {
     width: '100%',
@@ -19,21 +22,35 @@ const defaultOptions = {
     scrollwheel: true,
     disableDoubleClickZoom: true,
     fullscreenControl: false,
-    enableRetinaIcons: false
+    enableRetinaIcons: false,
+    styles: defaultTheme
 }
 
-export const Map = ({ isLoaded, center, onMarkerAdd, marker }: { isLoaded: boolean, center: { lat: number, lng: number }, onMarkerAdd: ({ lat, lng }: { lat: number, lng: number }) => void, marker: { lat: number, lng: number } | undefined }) => {
-    const mapRef = useRef(undefined)
+export const Map = ({ isLoaded, geolocation, center, zoom, onMarkerAdd, marker }:
+    {
+        isLoaded: boolean,
+        geolocation: coords | undefined,
+        center: coords,
+        zoom: number,
+        onMarkerAdd: ({ lat, lng }: any) => void,
+        marker: coords | undefined
+    }) => {
 
-    const onClick = (location: any) => {
+    const mapRef = useRef(undefined);
+
+    const onDblClick = (location: any) => {
         const lat = location.latLng.lat();
         const lng = location.latLng.lng()
         onMarkerAdd({ lat, lng });
-        console.log({ lat, lng })
+    }
+
+    const onClick = () => {
+        onMarkerAdd(undefined);
     }
 
     const onLoad = useCallback(function callback(map: any) {
         mapRef.current = map;
+
     }, [])
 
     const onUnmount = useCallback(function callback() {
@@ -46,13 +63,14 @@ export const Map = ({ isLoaded, center, onMarkerAdd, marker }: { isLoaded: boole
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
-                zoom={11}
-                onDblClick={onClick}
+                zoom={zoom}
+                onClick={onClick}
+                onDblClick={onDblClick}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
                 options={defaultOptions}
             >
-                <Marker position={center} />
+                {geolocation && <GeolocationMarker location={geolocation} />}
                 {marker && <Marker position={marker} />}
             </GoogleMap>
         </div>) : (<span className={styles.loader} ></span>)
