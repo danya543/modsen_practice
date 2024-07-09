@@ -13,7 +13,7 @@ const defCenter = {
 const API_KEY: string = import.meta.env.VITE_APP_API_KEY
 
 export const MainPage = () => {
-    const [markerCoord, setMarkerCoord] = useState(undefined)
+    const [markerCoord, setMarkerCoord] = useState(null)
     const [center, setCenter] = useState(defCenter);
     const [zoom, setZoom] = useState(10);
     const [geolocation, setGeolocation] = useState(undefined)
