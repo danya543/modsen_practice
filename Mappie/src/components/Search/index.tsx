@@ -5,7 +5,7 @@ import usePlacesAutocomplete, {
 import useOnclickOutside from "react-cool-onclickoutside";
 import { useEffect } from "react";
 
-export const Search = ({ isLoaded, onSearch }: { isLoaded: boolean, onSearch: ({ lat, lng }: { lat: number, lng: number }) => void }) => {
+export const Search = ({ isLoaded, onSearch }: { isLoaded: boolean, onSearch: ({ lat, lng }: { lat: number, lng: number }, zoom: number) => void }) => {
     const {
         ready,
         value,
@@ -34,7 +34,7 @@ export const Search = ({ isLoaded, onSearch }: { isLoaded: boolean, onSearch: ({
                 getGeocode({ address: description }).then((results) => {
                     const { lat, lng } = getLatLng(results[0]);
                     /* console.log("📍 Coordinates: ", { lat, lng }); */
-                    onSearch({ lat, lng });
+                    onSearch({ lat, lng }, 13);
                 });
             };
 
