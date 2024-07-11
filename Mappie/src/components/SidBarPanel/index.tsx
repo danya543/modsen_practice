@@ -1,15 +1,26 @@
-import { Search } from "../Search"
+import classNames from 'classnames';
 
-export const Panel = ({
-    isLoaded, onSearch
-}: {
-    isLoaded: boolean,
-    onSearch: ({ lat, lng }: { lat: number, lng: number }, zoom: number) => void
-}) => {
+import { sidebarProps } from '@/entities/location';
+
+import { Features } from '../Features';
+import { Radius } from '../Radius';
+import { Search } from '../Search';
+import styles from '../style.module.css';
+
+
+export const Panel = ({ isLoaded, onSearch, radius, onChangeRadius }: sidebarProps) => {
     return (
-        <div className="w-75">
+        <div
+            className={classNames(
+                {
+                    'w-75': true
+                },
+                styles.panel
+            )}
+        >
             <Search isLoaded={isLoaded} onSearch={onSearch} />
-            fav panel
+            <Features />
+            <Radius radius={radius} onChange={onChangeRadius} />
         </div>
-    )
-}
+    );
+};

@@ -1,3 +1,13 @@
+@font-face {
+  font-family: "Mont";
+  src: url("../fonts/Mont/Mont-Black.eot");
+  src: local("Mont Black"), local("Mont-Black"), url("../fonts/Mont/Mont-Black.eot") format("eot"),
+    url("../fonts/Mont/Mont-Black.woff2") format("woff2"),
+    url("../fonts/Mont/Mont-Black.woff") format("woff"),
+    url("../fonts/Mont/Mont-Black.ttf") format("ttf");
+  font-weight: 700;
+  font-style: normal;
+}
 .mapContainer {
   width: 75vw;
   height: 100vh;
@@ -55,4 +65,117 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.featuresContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.featuresContainer h6 {
+  font-family: "Mont";
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 25.56px;
+  text-align: left;
+}
+.features {
+  position: relative;
+  border: rgba(196, 196, 196) 3px solid;
+  border-radius: 10px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+}
+.features ul {
+  overflow-y: scroll;
+  width: 95%;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0;
+  gap: 20px;
+}
+.features ul::-webkit-scrollbar {
+  width: 5px;
+}
+.features ul::-webkit-scrollbar-track {
+  background: transparent;
+}
+.features ul::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+.features ul li {
+  opacity: 0.5;
+  cursor: pointer;
+  width: 100%;
+  height: 30px;
+}
+.features ul li img {
+  height: 100%;
+  margin-right: 5px;
+}
+.features button {
+  position: absolute;
+  width: 100%;
+  top: 130%;
+}
+.features button:hover {
+  background: #4c6298;
+}
+
+.radius input {
+  margin-right: 10px;
+  height: 40px;
+  width: 40%;
+  min-width: 90px;
+}
+
+.sideBar {
+  min-width: 400px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.profile {
+  max-width: 70px;
+  width: 25%;
+}
+.panel {
+  min-width: 220px;
+}
+
+.searchList {
+  position: absolute;
+  background: rgb(255, 255, 255);
+  border: black solid;
+  border-width: 0 2px 2px 2px;
+  border-radius: 0 0 10px 10px;
+  top: 40px;
+  padding-top: 10px;
+  width: 100%;
+  z-index: 1;
+}
+
+.infoWindow {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.infoWindow .image {
+  width: 20%;
+  max-width: 150px;
+}
+.cross {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  width: 25px;
+  cursor: pointer;
 }

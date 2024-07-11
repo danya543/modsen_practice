@@ -1,0 +1,20 @@
+export const mapObjects = [
+  { key: 'ForAdult', icon: 'src/assets/18.svg', text: 'Для взрослых' },
+  { key: 'Architecture', icon: 'src/assets/architecture.svg', text: 'Архитектура' },
+  { key: 'Bank', icon: 'src/assets/bank.svg', text: 'Банк' },
+  { key: 'Bike', icon: 'src/assets/bicycle.svg', text: 'Велосипед' },
+  { key: 'Car', icon: 'src/assets/car.svg', text: 'Авто' },
+  { key: 'Coffee', icon: 'src/assets/coffee.svg', text: 'Кофе/чай' },
+  { key: 'Culture', icon: 'src/assets/culture.svg', text: 'Культура' },
+  { key: 'Entertainment', icon: 'src/assets/entertainment.svg', text: 'Развлечения' },
+  { key: 'Food', icon: 'src/assets/food.svg', text: 'Еда' },
+  { key: 'GasStation', icon: 'src/assets/gas_station.svg', text: 'Заправка' },
+  { key: 'History', icon: 'src/assets/history.svg', text: 'История' },
+  { key: 'Hotels', icon: 'src/assets/hotels.svg', text: 'Отель' },
+  { key: 'Industrial', icon: 'src/assets/industrial.svg', text: 'Индустриальные объекты' },
+  { key: 'Nature', icon: 'src/assets/nature.svg', text: 'Природа' },
+  { key: 'Other', icon: 'src/assets/other.svg', text: 'Разное' },
+  { key: 'Religion', icon: 'src/assets/religion.svg', text: 'Религия' },
+  { key: 'Shop', icon: 'src/assets/shop.svg', text: 'Магазин' },
+  { key: 'Sport', icon: 'src/assets/sport.svg', text: 'Спорт' }
+];
