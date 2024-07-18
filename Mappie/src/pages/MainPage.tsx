@@ -39,11 +39,13 @@ export const MainPage = () => {
     }
 
     const onMarkerAdd = (coord: coords) => {
+        // @ts-ignore
         setMarkerCoord(coord);
     }
 
     useEffect(() => {
         getLocation().then((curLoc) => {
+            // @ts-ignore
             setGeolocation(curLoc)
         }).catch(() => setGeolocation(undefined))
             .finally(() => {
@@ -51,7 +53,9 @@ export const MainPage = () => {
                 console.log(centerCoords, radius, filters)
                 getPlacesInCircle(centerCoords, radius, filters)
                     .then((response) => {
+                        // @ts-ignore
                         setPlaces([...(response || [])]);
+                        console.log(places);
                     });
             })
     }, [radius, filters, center, geolocation]);

@@ -28,6 +28,7 @@ export const Features = () => {
         filters.delete(filter);
     };
 
+    // @ts-ignore
     const onClick = (e) => {
         const el = e.target.parentNode;
         if (el.id != 'filter') {

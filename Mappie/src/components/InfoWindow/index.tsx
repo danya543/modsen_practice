@@ -9,6 +9,7 @@ export const InfoWindow = ({
   secondaryText: string;
   image?: string;
 }) => {
+  // @ts-ignore
   const closeWindow = (e) => {
     e.target.parentNode.remove();
   };
