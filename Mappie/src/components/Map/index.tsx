@@ -1,33 +1,13 @@
 import { GoogleMap, Marker } from '@react-google-maps/api';
 import { useCallback, useRef } from 'react';
 
-import { defaultTheme } from '@/constants/Theme';
+
 import { coords } from '@/entities/location';
 
 import { GeolocationMarker } from '../geolocationMarker';
 import styles from '../style.module.css';
 import { StyledCircle } from './StyledCircle';
-
-const containerStyle = {
-  width: '100%',
-  height: '100%'
-};
-
-const defaultOptions = {
-  panControl: true,
-  zoomControl: true,
-  mapTypeControl: false,
-  scaleControl: false,
-  streetViewControl: false,
-  rotateControl: false,
-  clickableIcons: true,
-  keyboardShortcuts: false,
-  scrollwheel: true,
-  disableDoubleClickZoom: true,
-  fullscreenControl: false,
-  enableRetinaIcons: false,
-  styles: defaultTheme
-};
+import { containerStyle, defaultOptions } from './constants';
 
 export const Map = ({
   isLoaded,
@@ -66,7 +46,11 @@ export const Map = ({
     mapRef.current = undefined;
   }, []);
 
-  return isLoaded ? (
+  if (!isLoaded) {
+    return <span className={styles.loader} />;
+  }
+
+  return (
     <div className="w-75">
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -88,7 +72,5 @@ export const Map = ({
           ))}
       </GoogleMap>
     </div>
-  ) : (
-    <span className={styles.loader} />
   );
 };

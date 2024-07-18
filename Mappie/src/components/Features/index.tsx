@@ -27,6 +27,7 @@ export const Features = () => {
     const removeFilter = (filter: PlacesFilter) => {
         filters.delete(filter);
     };
+
     // @ts-ignore
     const onClick = (e) => {
         const el = e.target.parentNode;
