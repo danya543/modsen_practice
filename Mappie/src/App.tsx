@@ -1,4 +1,5 @@
 import './App.css';
+
 /* import { Provider } from 'react-redux';
 import { AppRouter } from './router/AppRouter';
 
@@ -13,8 +14,7 @@ import { MainPage } from './pages/MainPage';
       <AppRouter />
     </Provider> */
 const App = () => {
-  return (<MainPage />
-  );
-}
+  return <MainPage />;
+};
 
 export default App;

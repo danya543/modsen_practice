@@ -1,0 +1,20 @@
+export enum PlacesFilter {
+  Architecture,
+  Bank,
+  Bike,
+  Car,
+  Coffee,
+  Culture,
+  Entertainment,
+  Food,
+  GasStation,
+  History,
+  Hotels,
+  Industrial,
+  ForAdult,
+  Nature,
+  Other,
+  Religion,
+  Shop,
+  Sport
+}

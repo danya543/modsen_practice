@@ -1,44 +1,54 @@
-import usePlacesAutocomplete, {
-    getGeocode,
-    getLatLng,
-} from "use-places-autocomplete";
-import useOnclickOutside from "react-cool-onclickoutside";
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-export const Search = ({ isLoaded, onSearch }: { isLoaded: boolean, onSearch: ({ lat, lng }: { lat: number, lng: number }, zoom: number) => void }) => {
-    const {
-        ready,
-        value,
-        suggestions: { status, data },
-        setValue,
-        init,
-        clearSuggestions,
-    } = usePlacesAutocomplete({
-        initOnMount: false,
-        debounce: 300,
-    });
-    const ref = useOnclickOutside(() => {
-        clearSuggestions();
-    });
+import useOnclickOutside from 'react-cool-onclickoutside';
+import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 
-    const handleInput = (e: { target: { value: string; }; }) => {
-        setValue(e.target.value);
+import { Status } from '@/constants/Status';
+import { searchProps } from '@/entities/location';
+import { Input } from '@/ui/Input';
+
+import { SearchList } from '../SearchList';
+
+export const Search = ({ isLoaded, onSearch }: searchProps) => {
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    init,
+    clearSuggestions
+  } = usePlacesAutocomplete({
+    initOnMount: false,
+    debounce: 300
+  });
+  const ref = useOnclickOutside(() => {
+    clearSuggestions();
+  });
+
+  useEffect(() => {
+    if (isLoaded === true) {
+      init();
+    }
+  }, [isLoaded, init]);
+
+  const handleInput = (e: { target: { value: string } }) => {
+    setValue(e.target.value);
+  };
+
+  const handleSelect =
+    ({ description }: { description: string }) =>
+    () => {
+      setValue(description, false);
+      clearSuggestions();
+
+      getGeocode({ address: description }).then((results) => {
+        const { lat, lng } = getLatLng(results[0]);
+        /* console.log("📍 Coordinates: ", { lat, lng }); */
+        onSearch({ lat, lng }, 13);
+      });
     };
 
-    const handleSelect =
-        ({ description }: { description: string }) =>
-            () => {
-                setValue(description, false);
-                clearSuggestions();
-
-                getGeocode({ address: description }).then((results) => {
-                    const { lat, lng } = getLatLng(results[0]);
-                    /* console.log("📍 Coordinates: ", { lat, lng }); */
-                    onSearch({ lat, lng }, 13);
-                });
-            };
-
-    const renderSuggestions = () =>
+  /* const renderSuggestions = () =>
         data.map((suggestion) => {
             const {
                 place_id,
@@ -50,25 +60,20 @@ export const Search = ({ isLoaded, onSearch }: { isLoaded: boolean, onSearch: ({
                     <strong>{main_text}</strong> <small>{secondary_text}</small>
                 </li>
             );
-        });
+        }); */
 
-    useEffect(() => {
-        if (isLoaded === true) {
-            init();
-        }
-    }, [isLoaded, init])
-
-    return (
-        <div className="w-100 d-flex flex-column justify-content-center" ref={ref}>
-            <input
-
-                className=""
-                placeholder="Место, адрес.."
-                type="text"
-                value={value}
-                onChange={handleInput}
-                disabled={!ready} />
-            {status === "OK" && <ul className="list-unstyled">{renderSuggestions()}</ul>}
-        </div>
-    )
-}
+  return (
+    <div className="w-100 d-flex flex-column justify-content-center position-relative" ref={ref}>
+      <Input
+        placeholder={'Место, адрес..'}
+        type={'text'}
+        value={value}
+        onChange={handleInput}
+        isActive={!ready}
+      />
+      {status === Status.nothing
+        ? 'Ничего не найдено'
+        : status === Status.success && <SearchList data={data} handleSelect={handleSelect} />}
+    </div>
+  );
+};
