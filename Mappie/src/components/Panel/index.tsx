@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 
-import { sidebarProps } from '@/entities/location';
+import { Favourites } from '@/components/Favourites'
+import { panelProps } from '@/entities/location';
 
 import { Features } from '../Features';
 import { Radius } from '../Radius';
@@ -8,8 +9,9 @@ import { Search } from '../Search';
 import styles from '../style.module.css';
 
 
-export const Panel = ({ isLoaded, onSearch, radius, onChangeRadius }: sidebarProps) => {
-    return (
+export const Panel = ({ isLoaded, onSearch, radius, onChangeRadius, isActive }: panelProps) => {
+
+    return (isActive ?
         <div
             className={classNames(
                 {
@@ -21,6 +23,17 @@ export const Panel = ({ isLoaded, onSearch, radius, onChangeRadius }: sidebarPro
             <Search isLoaded={isLoaded} onSearch={onSearch} />
             <Features />
             <Radius radius={radius} onChange={onChangeRadius} />
+        </div >
+        :
+        <div className={classNames(
+            {
+                'w-75': true
+            },
+            styles.panel
+        )}>
+            <Search isLoaded={isLoaded} onSearch={onSearch} />
+            <Favourites />
         </div>
+
     );
 };

@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 import useOnclickOutside from 'react-cool-onclickoutside';
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 
@@ -37,16 +36,16 @@ export const Search = ({ isLoaded, onSearch }: searchProps) => {
 
   const handleSelect =
     ({ description }: { description: string }) =>
-    () => {
-      setValue(description, false);
-      clearSuggestions();
+      () => {
+        setValue(description, false);
+        clearSuggestions();
 
-      getGeocode({ address: description }).then((results) => {
-        const { lat, lng } = getLatLng(results[0]);
-        /* console.log("📍 Coordinates: ", { lat, lng }); */
-        onSearch({ lat, lng }, 13);
-      });
-    };
+        getGeocode({ address: description }).then((results) => {
+          const { lat, lng } = getLatLng(results[0]);
+          /* console.log("📍 Coordinates: ", { lat, lng }); */
+          onSearch({ lat, lng }, 13);
+        });
+      };
 
   /* const renderSuggestions = () =>
         data.map((suggestion) => {

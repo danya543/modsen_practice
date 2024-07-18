@@ -73,7 +73,8 @@
   flex-direction: column;
   gap: 5px;
 }
-.featuresContainer h6 {
+.featuresContainer h6,
+.favouriteContainer h6 {
   font-family: "Mont";
   font-size: 20px;
   font-weight: 800;
@@ -100,12 +101,15 @@
   padding-left: 0;
   gap: 20px;
 }
+.favouriteContainer::-webkit-scrollbar,
 .features ul::-webkit-scrollbar {
   width: 5px;
 }
+.favouriteContainer::-webkit-scrollbar-track,
 .features ul::-webkit-scrollbar-track {
   background: transparent;
 }
+.favouriteContainer::-webkit-scrollbar-thumb,
 .features ul::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
@@ -165,17 +169,84 @@
 .infoWindow {
   position: relative;
   width: 100%;
+  padding: 0 5%;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+  border: 3px solid rgba(196, 196, 196, 1);
 }
 .infoWindow .image {
-  width: 20%;
-  max-width: 150px;
+  width: 100%;
 }
+
 .cross {
   position: absolute;
   top: 5%;
   right: 0;
   width: 25px;
   cursor: pointer;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+.buttons button {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
+.bookmarkbtn {
+  background: white;
+  padding: 10px 22px 10px 22px;
+  border: 3px solid rgb(196, 196, 196);
+  color: rgb(128, 128, 128);
+}
+.routebtn {
+  background: rgb(94, 123, 199);
+  color: white;
+  border: 0;
+}
+.profile {
+  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.bookmark {
+  background: rgba(199, 94, 94, 1);
+  border-radius: 6px;
+  border: 0;
+  padding: 0;
+}
+.bookmark img {
+  padding: 18px 21px;
+}
+.search {
+  width: 60px;
+  height: 60px;
+  gap: 1px;
+  border-radius: 6px;
+  border: 3px 0px 0px 0px;
+  opacity: 0px;
+  border: 3px solid rgba(196, 196, 196, 1);
+}
+.search img {
+  padding: 10px;
+}
+
+.logo {
+  padding: 10px;
+}
+.favouriteContainer {
+  margin-top: 10px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
 }

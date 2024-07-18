@@ -50,14 +50,46 @@ export const MainPage = () => {
         }).catch(() => setGeolocation(undefined))
             .finally(() => {
                 const centerCoords = geolocation || center || defCenter;
-                console.log(centerCoords, radius, filters)
+                console.log(filters)
                 getPlacesInCircle(centerCoords, radius, filters)
                     .then((response) => {
                         // @ts-ignore
                         setPlaces([...(response || [])]);
-                        console.log(places);
+                        console.log(places)
                     });
             })
+        /* if (isLoaded) {
+            const service = new google.maps.places.PlacesService(
+                document.createElement('div')
+            );
+ 
+            const queryParts = [];
+            if (filters.name) {
+                queryParts.push(filters.name);
+            }
+            if (filters.buildingType) {
+                queryParts.push(filters.buildingType);
+            }
+ 
+            const query = queryParts.join(' ');
+ 
+            const request = {
+                query: query,
+                location: mapCenter,
+                radius: filters.radius
+            };
+ 
+            // @ts-ignore
+            service.textSearch(request, (results: Place[], status: google.maps.places.PlacesServiceStatus) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    setPlaces(results);
+                    dispatch(setPlacesList(results));
+                } else {
+                    console.error('Ошибка при запросе мест:', status);
+                }
+            });
+ 
+        } */
     }, [radius, filters, center, geolocation]);
 
     return (
