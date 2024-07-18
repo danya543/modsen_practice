@@ -1,11 +1,21 @@
 import classNames from 'classnames';
+import { useState } from 'react';
 
 import { sidebarProps } from '@/entities/location';
 
-import { Panel } from '../SidBarPanel';
+import { Panel } from '../Panel';
+import { Profile } from '../Profile';
 import styles from '../style.module.css';
 
 export const SideBar = ({ isLoaded, onSearch, radius, onChangeRadius }: sidebarProps) => {
+  const [isActive, setIsActive] = useState(true)
+  const handleSearch = () => {
+    setIsActive(true)
+  }
+  const handleFav = () => {
+    setIsActive(false)
+  }
+
   return (
     <div
       className={classNames(
@@ -15,12 +25,13 @@ export const SideBar = ({ isLoaded, onSearch, radius, onChangeRadius }: sidebarP
         styles.sideBar
       )}
     >
-      <div className={styles.profile}>left part</div>
+      <Profile isActive={true} onSearch={handleSearch} onFav={handleFav} />
       <Panel
         isLoaded={isLoaded}
         onSearch={onSearch}
         radius={radius}
         onChangeRadius={onChangeRadius}
+        isActive={isActive}
       />
     </div>
   );

@@ -43,7 +43,7 @@ export const Map = ({
   center: coords;
   zoom: number;
   onMarkerAdd: ({ lat, lng }: any) => void;
-  marker: coords | undefined;
+  marker: coords | null;
   radius: number;
 }) => {
   const mapRef = useRef(undefined);
