@@ -3,6 +3,7 @@ import { addDoc, collection, getDocs, getFirestore, query, where, writeBatch } f
 import { app } from "./firebase";
 
 const db = getFirestore(app);
+console.log(db)
 
 
 export const addFavoritePlace = async (userId: string, placeId: string) => {
@@ -19,7 +20,6 @@ export const addFavoritePlace = async (userId: string, placeId: string) => {
         const data = {
             place_id: placeId
         };
-
         const docRef = await addDoc(userCollection, data);
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -36,7 +36,6 @@ export const getFavoritePlaces = async (userId: string) => {
 
 export const deleteFavoritePlace = async (userId: string, placeId: string) => {
     try {
-        console.log(placeId)
         const userCollectionRef = collection(db, userId);
         const q = query(userCollectionRef, where('place_id', '==', placeId));
         const querySnapshot = await getDocs(q);
@@ -47,14 +46,13 @@ export const deleteFavoritePlace = async (userId: string, placeId: string) => {
                 batch.delete(doc.ref);
             });
             await batch.commit();
-            console.log("Document(s) deleted");
             return true;
         } else {
-            console.log("No matching documents found");
+            console.log("No places found");
             return false;
         }
     } catch (e) {
-        console.error("Error deleting document: ", e);
+        console.error("Error deleting: ", e);
         return false;
     }
 };

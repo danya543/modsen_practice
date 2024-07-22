@@ -1,20 +1,20 @@
 import './App.css';
 
-/* import { Provider } from 'react-redux';
-import { AppRouter } from './router/AppRouter';
+import { Route, Routes } from 'react-router-dom';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom"; */
+import { ErrorPage } from './pages/ErrorPage';
 import { MainPage } from './pages/MainPage';
-/* <Provider store={store}>
-      <AppRouter />
-    </Provider> */
+import { SignIn } from './pages/SignIn';
+import { SignUp } from './pages/SignUp';
+
 const App = () => {
-  return <MainPage />;
+
+  return <Routes>
+    <Route path="/" element={<MainPage />} />
+    <Route path="/signin" element={<SignIn />} />
+    <Route path="/signup" element={<SignUp />} />
+    <Route path="/*" element={<ErrorPage />} />
+  </Routes>;
 };
 
 export default App;

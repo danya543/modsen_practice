@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 import { sidebarProps } from '@/entities/location';
 
+import { Header } from '../Header';
 import { Panel } from '../Panel';
-import { Profile } from '../Profile';
 import styles from '../style.module.css';
 
 export const SideBar = ({ isLoaded, onSearch, radius, onChangeRadius }: sidebarProps) => {
@@ -25,7 +25,7 @@ export const SideBar = ({ isLoaded, onSearch, radius, onChangeRadius }: sidebarP
         styles.sideBar
       )}
     >
-      <Profile isActive={true} onSearch={handleSearch} onFav={handleFav} />
+      <Header onSearch={handleSearch} onFav={handleFav} />
       <Panel
         isLoaded={isLoaded}
         onSearch={onSearch}

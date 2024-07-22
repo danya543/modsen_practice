@@ -4,8 +4,8 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, } 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROHECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STOREGE_BUCKET,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };

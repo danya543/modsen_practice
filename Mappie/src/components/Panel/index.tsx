@@ -4,7 +4,6 @@ import { Favourites } from '@/components/Favourites'
 import { panelProps } from '@/entities/location';
 
 import { Features } from '../Features';
-import { Radius } from '../Radius';
 import { Search } from '../Search';
 import styles from '../style.module.css';
 
@@ -21,8 +20,7 @@ export const Panel = ({ isLoaded, onSearch, radius, onChangeRadius, isActive }: 
             )}
         >
             <Search isLoaded={isLoaded} onSearch={onSearch} />
-            <Features />
-            <Radius radius={radius} onChange={onChangeRadius} />
+            <Features radius={radius} onChangeRadius={onChangeRadius} />
         </div >
         :
         <div className={classNames(

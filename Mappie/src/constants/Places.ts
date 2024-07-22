@@ -1,11 +1,11 @@
 import { PlacesFilter } from '@/entities/PlacesFilter';
 
 export default new Map<PlacesFilter, Set<string>>([
-  [PlacesFilter.Architecture, new Set(['city_hall', 'tourist_attraction'])],
+  [PlacesFilter.Establishment, new Set(['city_hall', 'tourist_attraction'])],
   [PlacesFilter.Bank, new Set(['atm', 'bank'])],
   [PlacesFilter.Bike, new Set(['bicycle_store'])],
   [PlacesFilter.Car, new Set(['car_dealer', 'car_rental', 'car_repair', 'car_wash'])],
-  [PlacesFilter.Coffee, new Set(['cafe'])],
+  [PlacesFilter.Cafe, new Set(['cafe'])],
   [PlacesFilter.Culture, new Set(['art_gallery', 'museum', 'painter', 'tourist_attraction'])],
   [
     PlacesFilter.Entertainment,
@@ -17,7 +17,7 @@ export default new Map<PlacesFilter, Set<string>>([
   [PlacesFilter.Industrial, new Set(['storage'])],
   [PlacesFilter.ForAdult, new Set([''])],
   [PlacesFilter.Nature, new Set(['park', 'zoo'])],
-  [PlacesFilter.Religion, new Set(['church', 'hindu_temple', 'mosque', 'synagogue'])],
+  [PlacesFilter.Church, new Set(['church', 'hindu_temple', 'mosque', 'synagogue'])],
   [
     PlacesFilter.Shop,
     new Set([

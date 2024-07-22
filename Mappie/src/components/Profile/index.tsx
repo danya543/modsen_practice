@@ -1,17 +1,20 @@
+import classNames from "classnames";
+
+import { useAuth } from "@/hooks/useAuth";
+
 import styles from '../style.module.css'
 
-export const Profile = ({ isActive, onSearch, onFav }: { isActive: boolean, onSearch: () => void, onFav: () => void }) => {
-    /*     const search = (e) => { e.preventDefault() }
-        const favourite = (e) => { e.preventDefault() } */
+export const Profile = ({ isOpen, handleClose }: { isOpen: boolean, handleClose: () => void }) => {
+    const { isAuth, email } = useAuth();
     return (
-        <div className={styles.profile} >
-            <img className={styles.logo} src="src/assets/favicon.png" alt="" />
-            <button className={styles.search} onClick={onSearch}>
-                <img src="src/assets/search.svg" alt="" />
-            </button>
-            {isActive && <button className={styles.bookmark} onClick={onFav}>
-                <img src="src/assets/favourite.svg" alt="" />
-            </button>}
+        <div className={classNames(
+            !isOpen && styles.hidden,
+            styles.modalProfile
+        )}>
+            <img src="src/assets/close1.png" alt="" className={styles.cross} onClick={handleClose} />
+            <img src="src/assets/profile.png" alt="" />
+            {isAuth && <p>Email: <span>{email}</span></p>}
+            <button>Theme</button>
         </div>
     )
 }

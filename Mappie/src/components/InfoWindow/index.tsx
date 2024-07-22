@@ -3,10 +3,10 @@ import styles from '../style.module.css';
 export const InfoWindow = ({
   primaryText,
   secondaryText,
-  image
+  image,
 }: {
   primaryText: string;
-  secondaryText: string;
+  secondaryText: string | null;
   image: string;
 }) => {
   // @ts-ignore

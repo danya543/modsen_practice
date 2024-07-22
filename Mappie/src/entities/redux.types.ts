@@ -6,8 +6,8 @@ export interface UserState {
 }
 
 export interface FilterState {
-    buildingType: string;
-    radius: string;
+    filters: Array<string>;
+    radius: number;
     name: string;
 }
 
