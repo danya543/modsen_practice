@@ -33,8 +33,7 @@ export const MainPage = () => {
         libraries: ['places'],
         language: 'ru'
     });
-
-    const user = JSON.parse(localStorage.getItem('user') ?? '');
+    const user = JSON.parse(localStorage.getItem('user') ?? '[]');
     if (user) {
         dispatch(setUser({ email: user.email || '', token: user.accessToken, id: user.uid }));
     }
