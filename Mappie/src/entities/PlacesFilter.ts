@@ -1,9 +1,9 @@
 export enum PlacesFilter {
-  Architecture,
+  Establishment,
   Bank,
   Bike,
   Car,
-  Coffee,
+  Cafe,
   Culture,
   Entertainment,
   Food,
@@ -14,7 +14,7 @@ export enum PlacesFilter {
   ForAdult,
   Nature,
   Other,
-  Religion,
+  Church,
   Shop,
   Sport
 }

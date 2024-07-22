@@ -9,4 +9,7 @@ export type sidebarProps = {
   radius: number;
   onChangeRadius: (e: { target: { value: string } }) => void;
 };
-export type searchProps = Omit<sidebarProps, 'onChangeRadius' | 'radius'>;
+export type panelProps = sidebarProps & {
+  isActive: boolean;
+};
+export type searchProps = Omit<sidebarProps, 'onChangeRadius' | 'radius' | 'isActive'>;

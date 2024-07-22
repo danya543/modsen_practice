@@ -4,7 +4,7 @@ export const mapObjects = [
   { key: 'Bank', icon: 'src/assets/bank.svg', text: 'Банк' },
   { key: 'Bike', icon: 'src/assets/bicycle.svg', text: 'Велосипед' },
   { key: 'Car', icon: 'src/assets/car.svg', text: 'Авто' },
-  { key: 'Coffee', icon: 'src/assets/coffee.svg', text: 'Кофе/чай' },
+  { key: 'Cafe', icon: 'src/assets/cafe.svg', text: 'Кофе/чай' },
   { key: 'Culture', icon: 'src/assets/culture.svg', text: 'Культура' },
   { key: 'Entertainment', icon: 'src/assets/entertainment.svg', text: 'Развлечения' },
   { key: 'Food', icon: 'src/assets/food.svg', text: 'Еда' },

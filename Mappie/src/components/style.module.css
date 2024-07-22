@@ -8,6 +8,10 @@
   font-weight: 700;
   font-style: normal;
 }
+body {
+  overflow: hidden;
+}
+
 .mapContainer {
   width: 75vw;
   height: 100vh;
@@ -73,7 +77,8 @@
   flex-direction: column;
   gap: 5px;
 }
-.featuresContainer h6 {
+.featuresContainer h6,
+.favouriteContainer h6 {
   font-family: "Mont";
   font-size: 20px;
   font-weight: 800;
@@ -82,14 +87,15 @@
 }
 .features {
   position: relative;
-  border: rgba(196, 196, 196) 3px solid;
-  border-radius: 10px;
-  height: 350px;
+  height: 450px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 5px 0;
 }
 .features ul {
+  border: rgba(196, 196, 196) 3px solid;
+  border-radius: 10px;
   overflow-y: scroll;
   width: 95%;
   height: 100%;
@@ -99,18 +105,24 @@
   align-items: center;
   padding-left: 0;
   gap: 20px;
+  padding-top: 5px;
 }
+.favouriteContainer::-webkit-scrollbar,
 .features ul::-webkit-scrollbar {
   width: 5px;
+  margin-right: 10px;
 }
+.favouriteContainer::-webkit-scrollbar-track,
 .features ul::-webkit-scrollbar-track {
   background: transparent;
 }
+.favouriteContainer::-webkit-scrollbar-thumb,
 .features ul::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
 }
 .features ul li {
+  padding-left: 10px;
   opacity: 0.5;
   cursor: pointer;
   width: 100%;
@@ -121,9 +133,8 @@
   margin-right: 5px;
 }
 .features button {
-  position: absolute;
+  margin-top: 30px;
   width: 100%;
-  top: 130%;
 }
 .features button:hover {
   background: #4c6298;
@@ -143,6 +154,7 @@
   gap: 10px;
 }
 .profile {
+  position: relative;
   max-width: 70px;
   width: 25%;
 }
@@ -165,17 +177,238 @@
 .infoWindow {
   position: relative;
   width: 100%;
+  padding: 0 5%;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+  border: 3px solid rgba(196, 196, 196, 1);
 }
 .infoWindow .image {
-  width: 20%;
-  max-width: 150px;
+  width: 100%;
 }
+
 .cross {
   position: absolute;
   top: 5%;
   right: 0;
   width: 25px;
   cursor: pointer;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.buttons button {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
+.bookmarkbtn {
+  background: white;
+  padding: 10px 22px 10px 22px;
+  border: 3px solid rgb(196, 196, 196);
+  color: rgb(128, 128, 128);
+}
+.routebtn {
+  background: rgb(94, 123, 199);
+  color: white;
+  border: 0;
+}
+.profile {
+  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.bookmark {
+  background: rgba(199, 94, 94, 1);
+  border-radius: 6px;
+  border: 0;
+  padding: 0;
+}
+.bookmark img {
+  padding: 18px 21px;
+}
+.search {
+  width: 60px;
+  height: 60px;
+  gap: 1px;
+  border-radius: 6px;
+  opacity: 0px;
+  border: 3px solid rgba(196, 196, 196, 1);
+}
+.search img {
+  padding: 10px;
+}
+
+.logo {
+  padding: 10px;
+}
+.favouriteContainer {
+  margin-top: 10px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+}
+
+.profilebtn {
+  position: absolute;
+  bottom: 5vh;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid rgba(94, 123, 199, 1);
+  background: rgba(94, 123, 199, 0.1);
+}
+.profilebtn img {
+  width: 90%;
+  height: 76%;
+}
+.profilemenu {
+  opacity: 1;
+  position: absolute;
+  top: 75%;
+  left: 5%;
+  background: white;
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  padding: 5px;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 3px solid rgb(196, 196, 196);
+  transition: 0.5s;
+}
+.profilemenu p {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+.profilemenu p:last-child {
+  border-top: 3px solid rgba(94, 123, 199, 0.7);
+}
+
+.modalProfile {
+  position: absolute;
+  padding: 10px;
+  z-index: 2;
+  background-color: white;
+  top: 30vh;
+  left: 40vw;
+  width: 30vw;
+  height: 30vh;
+  border: 3px solid rgb(196, 196, 196);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modalProfile img {
+  width: fit-content;
+  height: 100px;
+}
+.modalProfile .cross {
+  width: 20px;
+  height: 20px;
+  right: 10px;
+}
+.modalProfile button {
+  align-self: flex-start;
+  margin-top: 20px;
+  border: 0;
+  background: rgba(94, 123, 199, 0.5);
+  border-radius: 5px;
+  transition: 0.5s;
+}
+.modalProfile button:hover {
+  background: rgb(0, 33, 118);
+  color: white;
+}
+.modalProfile p span {
+  background: rgba(94, 199, 127, 0.5);
+  border-radius: 5px;
+  padding: 3px;
+  padding-top: 0;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  top: 90%;
+}
+
+.passwordInput {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.passwordInput .passwordEye {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 88%;
+  width: 20px;
+  height: 20px;
+}
+
+.placeInfo {
+  height: 400px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.placeInfo img {
+  width: 100%;
+  max-height: 200px;
+  border-radius: 5px;
+}
+.placeInfo p {
+  font-size: 15px;
+}
+
+.placeInfo_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.placeInfo_title h3 {
+  width: 100%;
+  margin: 0;
+}
+.placeInfo_title p {
+  margin: 0;
+  margin-bottom: 3px;
+  font-size: 20px;
+}
+.placeInfo_title .open {
+  margin: 0;
+  font-size: 20px;
+}
+.placeInfo_title .rating {
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+.placeInfo_title .rating.well {
+  background: #21ff28d1;
+}
+.placeInfo_title .rating.good {
+  background: #ffd70f;
+}
+.placeInfo_title .rating.bad {
+  background: #ff3333;
 }
