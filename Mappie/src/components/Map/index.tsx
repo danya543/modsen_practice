@@ -119,7 +119,7 @@ export const Map = ({
                 lng: place.geometry.location.lng(),
               }}
               icon={{
-                url: `src/assets/places/${filters[filters.length - 1]?.toLowerCase()}.svg`,
+                url: `./src/assets/places/${filters[filters.length - 1]?.toLowerCase()}.svg`,
                 scaledSize: new window.google.maps.Size(30, 30)
               }}
               onClick={() => setCurrentPlace(place)}
@@ -135,7 +135,7 @@ export const Map = ({
               {getPlacePhoto(currentPlace)}
               <div className={styles.placeInfo_title}>
                 <h3>{currentPlace.name}</h3>
-                {<img src={`src/assets/places/${filters[filters.length - 1]?.toLowerCase()}.svg`} style={{ width: '30px' }} />}
+                {<img src={`./src/assets/places/${filters[filters.length - 1]?.toLowerCase()}.svg`} style={{ width: '30px' }} />}
                 <p
                   title={currentPlace.user_ratings_total}
                   className={classNames(
@@ -148,7 +148,7 @@ export const Map = ({
               <p>Адрес: {currentPlace.formatted_address}</p>
               <div className={styles.buttons}>
                 <button className={styles.bookmarkbtn} onClick={handleAddFavoriteCurried(currentPlace)}><img src="src/assets/book_btn.png" alt="" />Сохранить</button>
-                <button className={styles.routebtn} ><img src="src/assets/route.png" alt="" />Маршрут</button>
+                <button className={styles.routebtn} ><img src="./src/assets/route.png" alt="" />Маршрут</button>
               </div>
             </div>
           </InfoWindow>}
