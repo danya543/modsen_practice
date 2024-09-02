@@ -10,7 +10,7 @@ import styles from '../style.module.css';
 
 export const Panel = ({ isLoaded, onSearch, radius, onChangeRadius, isActive }: panelProps) => {
 
-    return (isActive ?
+    return (
         <div
             className={classNames(
                 {
@@ -20,18 +20,10 @@ export const Panel = ({ isLoaded, onSearch, radius, onChangeRadius, isActive }: 
             )}
         >
             <Search isLoaded={isLoaded} onSearch={onSearch} />
-            <Features radius={radius} onChangeRadius={onChangeRadius} />
+            {isActive ? <Features radius={radius} onChangeRadius={onChangeRadius} /> : <Favourites />}
+            <button className={styles.collapsebtn}>
+                <img src="/assets/open.svg" alt="" />
+            </button>
         </div >
-        :
-        <div className={classNames(
-            {
-                'w-75': true
-            },
-            styles.panel
-        )}>
-            <Search isLoaded={isLoaded} onSearch={onSearch} />
-            <Favourites />
-        </div>
-
     );
 };

@@ -19,7 +19,7 @@ export const PasswordInput = ({ name, placeholder, password, setPassword }: { na
                 //@ts-ignore
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <img src={isOpen ? 'src/assets/view.png' : 'src/assets/hide.png'} className={styles.passwordEye} onClick={handleSelect} />
+            <img src={isOpen ? '/assets/view.png' : '/assets/hide.png'} className={styles.passwordEye} onClick={handleSelect} />
         </div>)
 }
 

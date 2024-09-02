@@ -49,7 +49,7 @@ export const Features = ({ radius, onChangeRadius }: { radius: number, onChangeR
                     {Object.values(PlacesFilter).map((item: string | PlacesFilter, id: number) => {
                         return typeof item !== "string" &&
                             <li key={id} onClick={onClick}>
-                                <img src={`../src/assets/places/${PlacesFilter[item].toLowerCase()}.svg`} alt="" />
+                                <img src={`/assets/places/${PlacesFilter[item].toLowerCase()}.svg`} alt="" />
                                 <span>{PlacesFilter[item]}</span>
                             </li>
                     })}
