@@ -33,14 +33,14 @@ export const Header = ({ onSearch, onFav }: { onSearch: () => void, onFav: () =>
 
     return (
         <div className={styles.profile} >
-            <img className={styles.logo} src="src/assets/favicon.png" alt="" />
+            <img className={styles.logo} src="/assets/favicon.png" alt="" />
             <button className={styles.search} onClick={onSearch}>
-                <img src="src/assets/search.svg" alt="" />
+                <img src="/assets/search.svg" alt="" />
             </button>
             {isAuth && <button className={styles.bookmark} onClick={onFav}>
-                <img src="src/assets/favourite.svg" alt="" />
+                <img src="/assets/favourite.svg" alt="" />
             </button>}
-            <button onClick={onClick} className={styles.profilebtn}><img src="src/assets/user.png" alt="" /></button>
+            <button onClick={onClick} className={styles.profilebtn}><img src="/assets/user.png" alt="" /></button>
             <div className={classNames(
                 !isOpenMenu && styles.hidden,
                 styles.profilemenu

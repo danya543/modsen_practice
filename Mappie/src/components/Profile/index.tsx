@@ -11,8 +11,8 @@ export const Profile = ({ isOpen, handleClose }: { isOpen: boolean, handleClose:
             !isOpen && styles.hidden,
             styles.modalProfile
         )}>
-            <img src="src/assets/close1.png" alt="" className={styles.cross} onClick={handleClose} />
-            <img src="src/assets/profile.png" alt="" />
+            <img src="/assets/close1.png" alt="" className={styles.cross} onClick={handleClose} />
+            <img src="/assets/profile.png" alt="" />
             {isAuth && <p>Email: <span>{email}</span></p>}
             <button>Theme</button>
         </div>

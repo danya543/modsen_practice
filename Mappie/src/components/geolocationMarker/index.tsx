@@ -6,7 +6,7 @@ export const GeolocationMarker = ({ location }: { location: coords }) => {
   return (
     <Marker
       position={location}
-      icon={'./src/assets/geolocation.svg'}
+      icon={'/assets/geolocation.svg'}
       title={'Моё местоположение'}
     />
   );

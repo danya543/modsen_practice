@@ -66,15 +66,12 @@ export const Map = ({
       const photoUrl = place.photos[0].getUrl({ maxWidth: 200, maxHeight: 200 });
       return <img src={photoUrl} alt={place.name || 'Place'} />;
     }
-    else { return <img src={"src/assets/noimage.png"} alt={place.name || 'Place'} /> }
+    else { return <img src={"/assets/noimage.png"} alt={place.name || 'Place'} /> }
   }
 
   const handleAddFavorite = (place: FavPlace) => {
     if (user.id === null) {
       alert('Need to login')
-      /* document.getElementById('root').append(<Alert icon={<InfoIcon fontSize="inherit" />} severity="success">
-        Here is a gentle confirmation that your action was successful.
-      </Alert>) */
     }
     // @ts-ignore
     dispatch(addPlaceToFavorites(user.id, place));
@@ -119,7 +116,7 @@ export const Map = ({
                 lng: place.geometry.location.lng(),
               }}
               icon={{
-                url: `src/assets/places/${filters[filters.length - 1]?.toLowerCase()}.svg`,
+                url: `/assets/places/${filters[filters.length - 1]?.toLowerCase()}.svg`,
                 scaledSize: new window.google.maps.Size(30, 30)
               }}
               onClick={() => setCurrentPlace(place)}
@@ -129,13 +126,13 @@ export const Map = ({
         {currentPlace &&
           <InfoWindow
             position={{ lat: currentPlace.geometry?.location?.lat() || 0, lng: currentPlace.geometry?.location?.lng() || 0 }}
-            onCloseClick={() => setCurrentPlace(null)}
+
           >
             <div className={styles.placeInfo}>
               {getPlacePhoto(currentPlace)}
               <div className={styles.placeInfo_title}>
                 <h3>{currentPlace.name}</h3>
-                {<img src={`src/assets/places/${filters[filters.length - 1]?.toLowerCase()}.svg`} style={{ width: '30px' }} />}
+                {<img src={`/assets/places/${filters[filters.length - 1]?.toLowerCase()}.svg`} style={{ width: '30px' }} />}
                 <p
                   title={currentPlace.user_ratings_total}
                   className={classNames(
@@ -147,8 +144,8 @@ export const Map = ({
               </div>
               <p>Адрес: {currentPlace.formatted_address}</p>
               <div className={styles.buttons}>
-                <button className={styles.bookmarkbtn} onClick={handleAddFavoriteCurried(currentPlace)}><img src="src/assets/book_btn.png" alt="" />Сохранить</button>
-                <button className={styles.routebtn} ><img src="src/assets/route.png" alt="" />Маршрут</button>
+                <button className={styles.bookmarkbtn} onClick={handleAddFavoriteCurried(currentPlace)}><img src="/assets/book_btn.png" alt="" />Сохранить</button>
+                <button className={styles.routebtn} ><img src="/assets/route.png" alt="" />Маршрут</button>
               </div>
             </div>
           </InfoWindow>}

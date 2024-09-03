@@ -5,14 +5,17 @@ import { addToFavorites, deleteFromFavoritesList } from "../reducers/favoritesSl
 import { AppDispatch } from "../store";
 
 export const addPlaceToFavorites = (userId: string, place: Place) => async (dispatch: AppDispatch) => {
+    console.log(place)
     const favPlaces = JSON.parse(localStorage.getItem('favourite-places') ?? '[]')
     if (favPlaces.every((el: { place_id: string }) => el.place_id !== place.place_id)) {
         try {
             dispatch(addToFavorites(place));
             const favPlaces = JSON.parse(localStorage.getItem('favourite-places') ?? '[]');
-            const places = favPlaces.length > 0 ? [...favPlaces, place] : [place];
+            // @ts-ignore
+            const newPlace = Object.assign({}, place, { url: place.photos ? place.photos[0].getUrl({ maxWidth: 400, maxHeight: 200 }) : '/assets/noimage.png' });
+            const places = favPlaces.length > 0 ? [...favPlaces, newPlace] : [newPlace];
             localStorage.setItem('favourite-places', JSON.stringify(places));
-            await addFavoritePlace(userId, place.place_id);
+            await addFavoritePlace(userId, newPlace.place_id);
         } catch (error) {
             console.error("Failed to add place:", error);
         }
