@@ -1,8 +1,8 @@
 export interface FavPlace {
     geometry: {
         location: {
-            lat: string | null | undefined;
-            lng: string | null | undefined;
+            lat: () => number ;
+            lng: () => number ;
         }
     };
     photos: {
