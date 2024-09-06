@@ -82,7 +82,7 @@ export const Favourites = () => {
           <img src={place.url || (place.photos ? place.photos[0].getUrl({ maxWidth: 400, maxHeight: 200 }) : '/assets/noimage.png')} alt="" className={styles.image} />
           {/* <img src="/assets/close1.png" alt="" className={styles.cross} onClick={closeWindow} /> */}
           <h3>{place.name}</h3>
-          <p>Координаты: {place.geometry.location.lat}, {place.geometry.location.lng}</p>
+          <p>Координаты: {place.geometry.location.lat()}, {place.geometry.location.lng()}</p>
           <div className={styles.buttons}>
             <button className={styles.bookmarkbtn} onClick={handleDeleteFavPlace(place)}><img src="/assets/book_btn.png" alt="" />Удалить</button>
             <button className={styles.routebtn} ><img src="/assets/route.png" alt="" />Маршрут</button>
